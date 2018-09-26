@@ -15,6 +15,18 @@
 			return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
 		}
 
+		public static function checkList($list){
+
+			foreach ($list as &$row) {
+				$p = new Product();
+				$p->setData($row);
+				$row = $p->getValues();
+			}
+
+			return $list;
+
+		}
+
 		public function save(){
 
 			$sql = new Sql();
@@ -98,7 +110,7 @@
 				 break;
 
 				 case "png":
-				 $image = imagecreatefromjpg($file["tmp_name"]);
+				 $image = imagecreatefrompng($file["tmp_name"]);
 				 break;
 			}
 
