@@ -120,8 +120,6 @@
                             INNER JOIN tb_categories c ON c.idcategory = b.idcategory
                             WHERE c.idcategory = :idcategory
                             LIMIT $start, $itemsPerPage;
-
-                            SELECT FOUND_ROWS() AS nrtotal;
                             
                         ", [
                             ':idcategory'=>$this->getidcategory()
